@@ -1,0 +1,31 @@
+{
+  "name": "lightseeker",
+  "version": "0.0.1",
+  "description": "Lightseeker is a supercharged search engine for publications on the LBRY network.",
+  "main": "src/index.js",
+  "type": "module",
+  "keywords": [
+    "lbry",
+    "search",
+    "hono",
+    "rest",
+    "api",
+    "meilisearch"
+  ],
+  "scripts": {
+    "start": "NODE_ENV=production node src/index.js",
+    "dev": "NODE_ENV=development node --watch -r dotenv/config src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@hono/node-server": "^1.11.3",
+    "hono": "^4.4.6",
+    "meilisearch": "^0.40.0",
+    "yaml": "^2.4.5"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

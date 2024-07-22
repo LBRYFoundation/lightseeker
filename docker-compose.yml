@@ -1,0 +1,41 @@
+
+
+services:
+  # lightseeker:
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile
+  #   ports:
+  #     - 3000:8080
+  #   volumes:
+  #     - ./data:/data
+  #   environment:
+  #     - PORT=8080
+  #     - DATA_DIR=/data
+  #     - MEILISEARCH_HOST=meilisearch:${MEILI_PORT:-7700}
+  #     - MEILISEARCH_API_KEY=${MEILI_MASTER_KEY:-CYDDKecywVUcW5mNC7LaGil6qxuXuPZ7gGSWWLnz4XE}
+  #   depends_on:
+  #     - meilisearch
+  meilisearch:
+    container_name: meilisearch
+    image: docker.io/getmeili/meilisearch:v1.8.3
+    environment:
+      - http_proxy
+      - https_proxy
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY:-CYDDKecywVUcW5mNC7LaGil6qxuXuPZ7gGSWWLnz4XE}
+      - MEILI_NO_ANALYTICS=${MEILI_NO_ANALYTICS:-true}
+      - MEILI_ENV=${MEILI_ENV:-production}
+      - MEILI_LOG_LEVEL
+      - MEILI_DB_PATH=${MEILI_DB_PATH:-/data.ms}
+    ports:
+      - ${MEILI_PORT:-7700}:7700
+    volumes:
+      - ./data:/data.ms
+    #deploy:
+    #  resources:
+    #    limits:
+    #      memory: 5G
+    restart: unless-stopped
+
+
+

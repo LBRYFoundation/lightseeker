@@ -1,0 +1,8 @@
+node_modules/
+npm-debug.log
+
+data/
+
+.env
+state.json
+config.yml
